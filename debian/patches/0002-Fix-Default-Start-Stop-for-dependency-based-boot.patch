@@ -1,0 +1,42 @@
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Tue, 13 Oct 2009 22:25:09 +0200
+Subject: [PATCH] Fix Default-Start/Stop for dependency based boot
+
+based on a patch by Peter Reinholdtsen
+
+Closes; #541980
+---
+ cman/init.d/cman.in           |    4 ++--
+ rgmanager/init.d/rgmanager.in |    4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+Index: redhat-cluster-3.1.8/cman/init.d/cman.in
+===================================================================
+--- redhat-cluster-3.1.8.orig/cman/init.d/cman.in	2012-07-05 13:23:45.126800700 -0400
++++ redhat-cluster-3.1.8/cman/init.d/cman.in	2012-07-05 13:24:02.722801151 -0400
+@@ -10,8 +10,8 @@
+ # Provides:		cman
+ # Required-Start:	$network $time
+ # Required-Stop:	$network $time
+-# Default-Start:
+-# Default-Stop:
++# Default-Start:	S
++# Default-Stop: 	0 6
+ # Short-Description:	Starts and stops cman
+ # Description:		Starts and stops the Cluster Manager set of daemons
+ ### END INIT INFO
+Index: redhat-cluster-3.1.8/rgmanager/init.d/rgmanager.in
+===================================================================
+--- redhat-cluster-3.1.8.orig/rgmanager/init.d/rgmanager.in	2012-07-05 13:23:45.106800700 -0400
++++ redhat-cluster-3.1.8/rgmanager/init.d/rgmanager.in	2012-07-05 13:24:02.726801151 -0400
+@@ -8,8 +8,8 @@
+ # Provides:		rgmanager
+ # Required-Start:	cman
+ # Required-Stop:	cman
+-# Default-Start:
+-# Default-Stop:
++# Default-Start:	S
++# Default-Stop: 	0 6
+ # Short-Description:	Starts and stops Red Hat Service (resource group) Manager
+ # Description:		Starts and stops Red Hat Service (resource group) Manager
+ ### END INIT INFO

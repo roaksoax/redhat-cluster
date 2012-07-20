@@ -1,0 +1,39 @@
+From: =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>
+Date: Wed, 5 May 2010 17:09:59 +0200
+Subject: [PATCH] Depend on $remote_fs
+
+---
+ cman/init.d/cman.in           |    4 ++--
+ rgmanager/init.d/rgmanager.in |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: redhat-cluster-3.1.8/cman/init.d/cman.in
+===================================================================
+--- redhat-cluster-3.1.8.orig/cman/init.d/cman.in	2012-07-05 13:24:12.594801406 -0400
++++ redhat-cluster-3.1.8/cman/init.d/cman.in	2012-07-05 13:24:12.610801402 -0400
+@@ -8,8 +8,8 @@
+ #
+ ### BEGIN INIT INFO
+ # Provides:		cman
+-# Required-Start:	$network $time
+-# Required-Stop:	$network $time
++# Required-Start:	$network $time $remote_fs
++# Required-Stop:	$network $time $remote_fs
+ # Default-Start:	S
+ # Default-Stop: 	0 6
+ # Short-Description:	Starts and stops cman
+Index: redhat-cluster-3.1.8/rgmanager/init.d/rgmanager.in
+===================================================================
+--- redhat-cluster-3.1.8.orig/rgmanager/init.d/rgmanager.in	2012-07-05 13:24:12.594801406 -0400
++++ redhat-cluster-3.1.8/rgmanager/init.d/rgmanager.in	2012-07-05 13:24:12.614801402 -0400
+@@ -6,8 +6,8 @@
+ #
+ ### BEGIN INIT INFO
+ # Provides:		rgmanager
+-# Required-Start:	cman
+-# Required-Stop:	cman
++# Required-Start:	cman $remote_fs
++# Required-Stop:	cman $remote_fs
+ # Default-Start:	S
+ # Default-Stop: 	0 6
+ # Short-Description:	Starts and stops Red Hat Service (resource group) Manager
